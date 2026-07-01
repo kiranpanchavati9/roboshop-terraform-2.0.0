@@ -51,7 +51,7 @@ resource "aws_route53_record" "a-records" {
   name    = "${var.components[count.index]}-dev"
   type    = var.type
   ttl     = var.ttl
-  records = [aws_instance.${var.components[count.index]}-dev.public_ip]
+  records = [aws_instance."${var.components[count.index]}-dev".public_ip]
 }
 
 
