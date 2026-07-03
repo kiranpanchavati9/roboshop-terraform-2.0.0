@@ -46,7 +46,7 @@ variable components {
     "frontend",
     "catalogue",
     "cart",
-    "user",
+  #  "user",
     "shipping",
     "payment",
     "mysql",

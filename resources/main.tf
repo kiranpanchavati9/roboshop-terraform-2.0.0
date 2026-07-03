@@ -35,7 +35,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 ## Create Multiple EC2 instances 
 
 resource "aws_instance" "instance" {
-  count = 10 
+  count = 9 
   ami           = var.ami
   instance_type = var.instance_type
   security_groups = [aws_security_group.allow_ports_firewall_roboshop.name]
@@ -46,13 +46,10 @@ resource "aws_instance" "instance" {
 }
 
 resource "aws_route53_record" "a-records" {
-  count = 10
+  count = 9
   zone_id = var.zone_id
   name    = "${var.components[count.index]}-dev"
   type    = var.type
   ttl     = var.ttl
   records = [aws_instance.instance[count.index].public_ip]
 }
-
-
-
